@@ -10,6 +10,7 @@ module.exports = {
   },
   rules: {
     eqeqeq: 'off',
-    'react/display-name': 'off'
+    'react/display-name': 'off',
+    'react/prop-types': 'off'
   }
 }
