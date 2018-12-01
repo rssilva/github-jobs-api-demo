@@ -2,14 +2,24 @@ import React from 'react'
 
 export default class JobsList extends React.Component {
   renderItems (jobs = []) {
-    return jobs.map((job) => {
+    const selectItems = jobs.slice(0,10);
+    const filter = this.filterRemoteWork(jobs);
+
+    return filter.map((job) => {
+      console.log(job)
       return (
         <li key={job.id}>
           <span>{job.title} </span>
-          <div dangerouslySetInnerHTML={{ __html: job.description }} />
+          <span>{job.location} </span>
+
+          {/*<div dangerouslySetInnerHTML={{ __html: job.description }}*/} />
         </li>
       )
     })
+  }
+
+  filterRemoteWork(jobs) {
+    return jobs.filter(job => job.location.toLowerCase().includes('remote'))
   }
 
   render () {
